@@ -7,27 +7,111 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
+    <!-- Google Font Roboto Condensed -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i&display=swap" rel="stylesheet">
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    
+    <!-- App nav CSS -->
+    <link rel= "stylesheet" href="/styles/nav.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+    <!-- App new-tweet CSS -->
+    <link rel= "stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    
   </head>
 
   <body>
+  
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
+      <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
+      <span id = "compose-tweet-button"><button>Compose Tweet</button></span>
     </nav>
 
     <!-- Page-specific (main) content here -->
+
     <main class="container">
+      <script> //ajax test todo post request
+        $(document).ready(function(event){
+
+            $("#new-tweet-form").submit(function(event) {
+              event.preventDefault(); 
+              var formSubmission = $(event.target).find('textarea').val()
+              let serialForm= $( this ).serialize();
+              let submitobj = [{content:{text: $(event.target).find('textarea').val()}}]
+              if(formSubmission === ''){
+                return alert("Please add wonderful insight to your message for all to hear!")
+              } if(formSubmission.length > 140){
+                return alert("keep the message simple, 140 character max!")
+              }
+
+              $.ajax('/tweets', { method: 'post', data: serialForm})
+             .done(function (response){
+              console.log("responce in html",response)
+                let responseArr = []
+                responseArr.push(response)
+               renderTweets(responseArr)
+               // causing a double entry on the submit
+             })
+          })
+        })
+
+//not working 
+// $("#compose-tweet-button").click(function () {
+//   if ( $( "#new-tweet" ).is( ":hidden" ) ) {
+//     $( "#new-tweet" ).slideDown( "slow" );
+//   } else {
+//     $( "#new-tweet" ).hide();
+//   }
+// });
+
+$( "#compose-tweet-button" )
+.click(function() {
+  $( '.new-tweet' ).toggle( "slow" );
+});
+        </script>
+      <section class="new-tweet" style="display: none">
+        <h2>Compose Tweet</h2>
+        <hr/>
+        <form id= 'new-tweet-form'>
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <span class="foo">
+          <input type="submit" value="Tweet" id= 'new-tweet-submit-button'>
+          <span class="counter">140</span>
+          </span>
+          <script>
+             
+          </script>
+        </form>
+        
+      </section>
+
+      <section class= "feed" id= 'tweets-container'>
+        
+      
+
+
+
+        </section>
+    
+                                    
+            
     </main>
+
+  
 
   </body>
 </html>

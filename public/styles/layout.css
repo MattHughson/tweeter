@@ -10,16 +10,51 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
 
 body {
   margin: 0;
   color: #244751;
-  background-color: #eee;
+  background-color: lightgrey;
+  font-family: 'Roboto+Condensed', serif;
 }
-
-/*
+main{
+  background-color: white;
+  display: flex;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+.new-tweet{
+  margin-top: 2em;
+  background-color: lightgrey;
+  width:450px;
+  margin-top:140px;
+  display: block;
+  align-content: center;
+  width: 450px;
+  border: solid;
+  border-color: black;
+  border-radius: 10px;  
+  padding: 2em;
+  margin-bottom: 2em;
+}
+/* line  below compose tweet*/
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid black;
+  margin: 1em 0;
+  padding: 0;
+}
+textarea{
+  width: 100%;
+}
+/* character counter need to rename class */
+.foo{
+  display: flex;
+  /* space betwwen tweet button and character count */
+  justify-content: space-between;
+}
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

@@ -1,0 +1,21 @@
+<article>
+
+          <header class="name-field">
+
+            
+            <img class = "profile-img" src="/images/bird.png">
+            <div class="user-info">
+             <h2>header test</h2>
+              <span id="handle"> username</span>
+            </div>
+
+          </header>
+          <div>
+            main feed test
+          </div>
+          <footer>
+            footer test
+          </footer>
+
+
+        </article>

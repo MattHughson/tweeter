@@ -1,0 +1,32 @@
+.feed{
+    width: 450px;
+    background-color: white;
+    border: solid;
+    border-color: black;
+    border-radius: 15px;
+}
+
+.name-field{
+    display: flex;
+    width: 100%;
+    background-color: lightgrey;
+
+}
+  .profile-img{
+    height: 80px;
+    width: 80px;
+}
+  .user-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.user-info h2{
+    margin-top: 0%;
+}
+#handle{
+    align-self: center;
+}
+.feed :hover{
+    background: red;
+}

@@ -1,0 +1,29 @@
+
+nav {
+    margin: 0;
+    padding:0;
+    color: #e8fdff;
+    background: #00a087;
+    font-family: 'Roboto+Condensed', serif;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 80px;
+    padding-left: 2em;
+    padding-right: 2em;
+    display: flex;
+    align-items: center;
+}
+#nav-bar .logo{
+    height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    display: flex;
+}
+#nav-bar .header{
+    display: inline-block;
+    font-size: 2em;
+}
+#compose-tweet-button{
+align-self: flex-end;
+}
