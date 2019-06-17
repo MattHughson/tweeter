@@ -8,11 +8,14 @@ const tweetsRoutes  = express.Router();
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
+    // DataHelpers.getTweets(callback);
+
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
         res.json(tweets);
+        console.log(res.json(tweets))
       }
     });
   });
@@ -32,11 +35,12 @@ module.exports = function(DataHelpers) {
       created_at: Date.now()
     };
 
-    DataHelpers.saveTweet(tweet, (err) => {
+    DataHelpers.saveTweet(tweet, (err, tweet) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
         res.status(201).send(tweet);
+
       }
     });
   });
