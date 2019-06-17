@@ -13,6 +13,7 @@ nav {
     padding-right: 2em;
     display: flex;
     align-items: center;
+    
 }
 #nav-bar .logo{
     height: 80px;

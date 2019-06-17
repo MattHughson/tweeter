@@ -27,6 +27,16 @@
 #handle{
     align-self: center;
 }
-.feed :hover{
-    background: red;
+.footert{
+    justify-content: space-between;
+}
+
+#footerimg{
+    width:3em;
+    justify-items: right;
+    opacity: 0;
+}
+#footerimg:hover{
+    opacity: 1;
+
 }

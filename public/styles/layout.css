@@ -12,12 +12,15 @@ html {
 
 
 body {
+  display: flex;
+  justify-content: center;
   margin: 0;
   color: #244751;
   background-color: lightgrey;
   font-family: 'Roboto+Condensed', serif;
 }
 main{
+  align-items: center;
   background-color: white;
   display: flex;
   width: 800px;
@@ -55,6 +58,9 @@ textarea{
   display: flex;
   /* space betwwen tweet button and character count */
   justify-content: space-between;
+}
+#tweets-container{
+  margin-top: 6em;
 }
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

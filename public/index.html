@@ -47,26 +47,7 @@
       <script> //ajax test todo post request
         $(document).ready(function(event){
 
-            $("#new-tweet-form").submit(function(event) {
-              event.preventDefault(); 
-              var formSubmission = $(event.target).find('textarea').val()
-              let serialForm= $( this ).serialize();
-              let submitobj = [{content:{text: $(event.target).find('textarea').val()}}]
-              if(formSubmission === ''){
-                return alert("Please add wonderful insight to your message for all to hear!")
-              } if(formSubmission.length > 140){
-                return alert("keep the message simple, 140 character max!")
-              }
-
-              $.ajax('/tweets', { method: 'post', data: serialForm})
-             .done(function (response){
-              console.log("responce in html",response)
-                let responseArr = []
-                responseArr.push(response)
-               renderTweets(responseArr)
-               // causing a double entry on the submit
-             })
-          })
+        
         })
 
 //not working 

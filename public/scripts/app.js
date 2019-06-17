@@ -1,21 +1,53 @@
 // Test / driver code (temporary). Eventually will get this from the server.
 $(document).ready(function() {
     //renderTweets(data);
+ 
+  //think i need to add an event listner to refresh the tweet page
+  function loadTweets(){
+
     let AJAXParameters = {
       url:'http://localhost:8080/tweets',
       method:'GET'
   }
-  //think i need to add an event listner to refresh the tweet page
+
   $.ajax(AJAXParameters)
   .done(listOfTweets =>{
-    console.log("list of tweet", listOfTweets)
     for(let i = 0; i < listOfTweets.length; i++){
-      console.log("before rendertweets", listOfTweets[i])
       let newARR = []
       newARR.push(listOfTweets[i])
       renderTweets(newARR);
     }
-  })
+  }
+  )
+  }
+
+  //text input form submitting to the mongoDB
+  $("#new-tweet-form").submit(function(event) {
+    event.preventDefault(); 
+    var formSubmission = $(event.target).find('textarea').val()
+    let serialForm= $( this ).serialize();
+    let submitobj = [{content:{text: $(event.target).find('textarea').val()}}]
+    if(formSubmission === ''){
+      return alert("Please add wonderful insight to your message for all to hear!")
+    } if(formSubmission.length > 140){
+      return alert("keep the message simple, 140 character max!")
+    }
+
+    $.ajax('/tweets', { method: 'post', data: serialForm})
+   .done(function (response){
+    //   let responseArr = []
+    //   responseArr.push(response)
+    //  renderTweets(responseArr)
+    $('#tweets-container').prepend(createTweetElement(response))
+
+     
+
+   })
+   // reset text counter
+   $("textarea").val("")
+   $('.counter').text(140)
+})
+  loadTweets();
 });
 
 const data = [
@@ -66,9 +98,12 @@ const data = [
   ];
   function createTweetElement(Object){
       let profileImglink = Object.user ? Object.user.avatars.small : "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png";
-       let nameHeader = Object.user ? Object.user.name : 'Matt test';
+      let nameHeader = Object.user ? Object.user.name : 'Matt test';
       let nameHandle = Object.user ? Object.user.handle : "@matt";
-       let createdDate = Object.created_at || 777777;
+      let createdDate = Object.created_at //|| 777777;
+      let todayDate = Date.now()
+      let oneDay = 24*60*60*1000;
+      let diffDays = Math.round(Math.abs((createdDate - todayDate))/(oneDay));
       let messageContent = Object.content.text;
       let article = $('<article>');
       //header to modify
@@ -91,7 +126,8 @@ const data = [
       let divTwo = $('<div>')
       .text(messageContent);
       //footer 
-      let footer = $('<footer>').text(createdDate);
+      let footerImg = ('<img id= "footerimg" src = https://image.freepik.com/free-vector/new-like-love-dislike-icons-printed-paper-social-media-vector-stock-illustration_100456-50.jpg>')
+      let footer = $('<footer>').text(diffDays+" days ago").append(footerImg);
       // add everything to the aritcle
       article.append(header)
       .append(divTwo).append(footer)
@@ -108,6 +144,7 @@ function renderTweets(tweets) {
         $('#tweets-container').append(createTweetElement(tweets[i]))
     }
 }
+
 
 
 
