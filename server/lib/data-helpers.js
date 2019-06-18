@@ -41,8 +41,4 @@ module.exports = function makeDataHelpers(db) {
   };
   
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
