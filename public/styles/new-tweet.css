@@ -36,7 +36,12 @@
     justify-items: right;
     opacity: 0;
 }
-#footerimg:hover{
-    opacity: 1;
 
+.hover:hover{
+    opacity: 1;
+    border: black solid;
 }
+.hover:hover #footerimg{
+    opacity: 1;
+}
+

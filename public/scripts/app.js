@@ -105,7 +105,7 @@ const data = [
       let oneDay = 24*60*60*1000;
       let diffDays = Math.round(Math.abs((createdDate - todayDate))/(oneDay));
       let messageContent = Object.content.text;
-      let article = $('<article>');
+      let article = $('<article>').addClass('hover');
       //header to modify
       let header = $('<header>')
       .addClass('name-field');
@@ -126,12 +126,11 @@ const data = [
       let divTwo = $('<div>')
       .text(messageContent);
       //footer 
-      let footerImg = ('<img id= "footerimg" src = https://image.freepik.com/free-vector/new-like-love-dislike-icons-printed-paper-social-media-vector-stock-illustration_100456-50.jpg>')
+      let footerImg = ('<img class= "social" id= "footerimg" src = https://image.freepik.com/free-vector/new-like-love-dislike-icons-printed-paper-social-media-vector-stock-illustration_100456-50.jpg>')
       let footer = $('<footer>').text(diffDays+" days ago").append(footerImg);
       // add everything to the aritcle
       article.append(header)
       .append(divTwo).append(footer)
-console.log("article", article)
 return article
 
   }
