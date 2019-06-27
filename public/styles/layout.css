@@ -63,8 +63,6 @@ textarea{
   margin-top: 6em;
 }
 .alert{
-  display: none;
-  z-index: 10;
   margin-top: 2em;
   background-color: lightgrey;
   width:450px;

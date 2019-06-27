@@ -28,9 +28,9 @@ $(document).ready(function() {
     let serialForm= $( this ).serialize();
     let submitobj = [{content:{text: $(event.target).find('textarea').val()}}]
     if(formSubmission === ''){
-      return $('#alertone').text("Please add wonderful insight to your message for all to hear!")
+      return $('#alertone').text("Please add wonderful insight to your message for all to hear!").show()
     } if(formSubmission.length > 140){
-      return $('#alertone').text("keep the message simple, 140 character max!")
+      return $('#alertone').text("keep the message simple, 140 character max!").show()
     }
 
     $.ajax('/tweets', { method: 'post', data: serialForm})

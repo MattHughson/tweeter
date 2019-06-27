@@ -44,7 +44,7 @@
     <!-- Page-specific (main) content here -->
 
     <main class="container">
-        <div class="alert" id="alertone">
+        <div class="alert" id="alertone" style="display: none">
 
           </div>
       <script> //ajax test todo post request
@@ -58,10 +58,6 @@ $( "#compose-tweet-button" )
   $( '.new-tweet' ).toggle( "slow" );
 });
 
-$( "#'new-tweet-submit-button'" )
-.click(function() {
-  $( '.alert' ).css('display','block')
-});
         </script>
       <section class="new-tweet" style="display: none">
         <h2>Compose Tweet</h2>
