@@ -44,24 +44,23 @@
     <!-- Page-specific (main) content here -->
 
     <main class="container">
+        <div class="alert" id="alertone">
+
+          </div>
       <script> //ajax test todo post request
         $(document).ready(function(event){
 
         
         })
 
-//not working 
-// $("#compose-tweet-button").click(function () {
-//   if ( $( "#new-tweet" ).is( ":hidden" ) ) {
-//     $( "#new-tweet" ).slideDown( "slow" );
-//   } else {
-//     $( "#new-tweet" ).hide();
-//   }
-// });
-
 $( "#compose-tweet-button" )
 .click(function() {
   $( '.new-tweet' ).toggle( "slow" );
+});
+
+$( "#'new-tweet-submit-button'" )
+.click(function() {
+  $( '.alert' ).css('display','block')
 });
         </script>
       <section class="new-tweet" style="display: none">

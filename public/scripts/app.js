@@ -28,9 +28,9 @@ $(document).ready(function() {
     let serialForm= $( this ).serialize();
     let submitobj = [{content:{text: $(event.target).find('textarea').val()}}]
     if(formSubmission === ''){
-      return alert("Please add wonderful insight to your message for all to hear!")
+      return $('#alertone').text("Please add wonderful insight to your message for all to hear!")
     } if(formSubmission.length > 140){
-      return alert("keep the message simple, 140 character max!")
+      return $('#alertone').text("keep the message simple, 140 character max!")
     }
 
     $.ajax('/tweets', { method: 'post', data: serialForm})
@@ -96,6 +96,18 @@ const data = [
       "created_at": 1461113796368
     }
   ];
+
+  function checkDay(diffDays, createdDate){
+    if (diffDays === 0){
+      let todayDateAgain = Date.now()
+      let oneDayByHours = 24*60*60
+      let diffDaysAgain = Math.round(Math.abs((createdDate - todayDateAgain))/(oneDayByHours));
+
+      return `${diffDaysAgain} minutes ago.`
+    } else{
+      return `${diffDays} days ago`
+  }
+}
   function createTweetElement(Object){
       let profileImglink = Object.user ? Object.user.avatars.small : "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png";
       let nameHeader = Object.user ? Object.user.name : 'Matt test';
@@ -104,6 +116,7 @@ const data = [
       let todayDate = Date.now()
       let oneDay = 24*60*60*1000;
       let diffDays = Math.round(Math.abs((createdDate - todayDate))/(oneDay));
+      let daychecker = checkDay(diffDays, createdDate)
       let messageContent = Object.content.text;
       let article = $('<article>').addClass('hover');
       //header to modify
@@ -127,7 +140,7 @@ const data = [
       .text(messageContent);
       //footer 
       let footerImg = ('<img class= "social" id= "footerimg" src = https://image.freepik.com/free-vector/new-like-love-dislike-icons-printed-paper-social-media-vector-stock-illustration_100456-50.jpg>')
-      let footer = $('<footer>').text(diffDays+" days ago").append(footerImg);
+      let footer = $('<footer>').text(daychecker).append(footerImg);
       // add everything to the aritcle
       article.append(header)
       .append(divTwo).append(footer)

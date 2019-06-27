@@ -62,5 +62,20 @@ textarea{
 #tweets-container{
   margin-top: 6em;
 }
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+.alert{
+  display: none;
+  z-index: 10;
+  margin-top: 2em;
+  background-color: lightgrey;
+  width:450px;
+  margin-top:140px;
+  display: block;
+  align-content: center;
+  width: 450px;
+  border: solid;
+  border-color: black;
+  border-radius: 10px;  
+  padding: 2em;
+  margin-bottom: 2em;
+  text-emphasis-color: black;
+}
